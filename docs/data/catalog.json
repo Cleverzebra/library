@@ -1,0 +1,100 @@
+{
+  "format": "cleverzebra-library-catalog",
+  "version": 1,
+  "owner": "Cleverzebra",
+  "generatedAt": "2026-09-26T12:00:00.000Z",
+  "generatedBy": "seed",
+  "sites": [
+    {
+      "name": "groundwork",
+      "url": "https://cleverzebra.github.io/groundwork/",
+      "repoUrl": "https://github.com/Cleverzebra/groundwork",
+      "firstSeen": "2026-09-26T12:00:00.000Z",
+      "baseline": true
+    },
+    {
+      "name": "julias-garden-year",
+      "url": "https://cleverzebra.github.io/julias-garden-year/",
+      "repoUrl": "https://github.com/Cleverzebra/julias-garden-year",
+      "firstSeen": "2026-09-26T12:00:00.000Z",
+      "baseline": true
+    },
+    {
+      "name": "boston-local-guide",
+      "url": "https://cleverzebra.github.io/boston-local-guide/",
+      "repoUrl": "https://github.com/Cleverzebra/boston-local-guide",
+      "firstSeen": "2026-09-26T12:00:00.000Z",
+      "baseline": true
+    },
+    {
+      "name": "sofia-somerville-guide",
+      "url": "https://cleverzebra.github.io/sofia-somerville-guide/",
+      "repoUrl": "https://github.com/Cleverzebra/sofia-somerville-guide",
+      "firstSeen": "2026-09-26T12:00:00.000Z",
+      "baseline": true
+    },
+    {
+      "name": "asheville-highlands-guide",
+      "url": "https://cleverzebra.github.io/asheville-highlands-guide/",
+      "repoUrl": "https://github.com/Cleverzebra/asheville-highlands-guide",
+      "firstSeen": "2026-09-26T12:00:00.000Z",
+      "baseline": true
+    },
+    {
+      "name": "asheville-locals-guide",
+      "url": "https://cleverzebra.github.io/asheville-locals-guide/",
+      "repoUrl": "https://github.com/Cleverzebra/asheville-locals-guide",
+      "firstSeen": "2026-09-26T12:00:00.000Z",
+      "baseline": true
+    },
+    {
+      "name": "torquay-local-guide",
+      "url": "https://cleverzebra.github.io/torquay-local-guide/",
+      "repoUrl": "https://github.com/Cleverzebra/torquay-local-guide",
+      "firstSeen": "2026-09-26T12:00:00.000Z",
+      "baseline": true
+    },
+    {
+      "name": "natick-local-guide",
+      "url": "https://cleverzebra.github.io/natick-local-guide/",
+      "repoUrl": "https://github.com/Cleverzebra/natick-local-guide",
+      "firstSeen": "2026-09-26T12:00:00.000Z",
+      "baseline": true
+    },
+    {
+      "name": "monhegan-island-guide",
+      "url": "https://cleverzebra.github.io/monhegan-island-guide/",
+      "repoUrl": "https://github.com/Cleverzebra/monhegan-island-guide",
+      "firstSeen": "2026-09-26T12:00:00.000Z",
+      "baseline": true
+    },
+    {
+      "name": "magnolia-house-guide",
+      "url": "https://cleverzebra.github.io/magnolia-house-guide/",
+      "repoUrl": "https://github.com/Cleverzebra/magnolia-house-guide",
+      "firstSeen": "2026-09-26T12:00:00.000Z",
+      "baseline": true
+    },
+    {
+      "name": "watercalculator",
+      "url": "https://cleverzebra.github.io/watercalculator/",
+      "repoUrl": "https://github.com/Cleverzebra/watercalculator",
+      "firstSeen": "2026-09-26T12:00:00.000Z",
+      "baseline": true
+    },
+    {
+      "name": "gwyn-college-hq",
+      "url": "https://cleverzebra.github.io/gwyn-college-hq/",
+      "repoUrl": "https://github.com/Cleverzebra/gwyn-college-hq",
+      "firstSeen": "2026-09-26T12:00:00.000Z",
+      "baseline": true
+    },
+    {
+      "name": "gwyn-babysitting-tutoring",
+      "url": "https://cleverzebra.github.io/gwyn-babysitting-tutoring/",
+      "repoUrl": "https://github.com/Cleverzebra/gwyn-babysitting-tutoring",
+      "firstSeen": "2026-09-26T12:00:00.000Z",
+      "baseline": true
+    }
+  ]
+}

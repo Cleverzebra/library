@@ -1,0 +1,97 @@
+{
+  "note": "Optional. An entry here only changes how a site appears; new sites show up without one. Keys are GitHub repository names. Fields: title, description, category, order, tags, exclude.",
+  "categories": ["Gardens", "Local Guides", "Monhegan", "Family", "Other"],
+  "sites": {
+    "groundwork": {
+      "title": "Groundwork",
+      "category": "Gardens",
+      "order": 1,
+      "description": "A zone-aware reference for the yard: a plant finder, about 300 plants, a pruning calendar with the cuts drawn out, and a plant doctor.",
+      "tags": ["plants", "plant finder", "pruning", "plant doctor", "hardiness zone", "native plants", "garden design"]
+    },
+    "julias-garden-year": {
+      "title": "Julia’s Garden Year",
+      "category": "Gardens",
+      "order": 2,
+      "description": "The living handbook for Julia’s Natick garden: what’s blooming, what to do this month, a care card for every plant, and a journal.",
+      "tags": ["Natick", "blooming", "plant care", "garden journal", "plant ideas"]
+    },
+    "boston-local-guide": {
+      "title": "Boston",
+      "category": "Local Guides",
+      "order": 1,
+      "description": "Greater Boston for one household: free pickleball and trails, beaches, day trips, vegetarian-first dining, date ideas, and dog outings.",
+      "tags": ["Boston", "pickleball", "beaches", "day trips", "vegetarian", "date ideas", "dogs", "events", "calendar"]
+    },
+    "sofia-somerville-guide": {
+      "title": "Sofia & Bandit’s Somerville",
+      "category": "Local Guides",
+      "order": 2,
+      "description": "Somerville for Sofia and Bandit the dog: independent cafés and bakeries, dog beaches and off-leash fields, secondhand finds, and day trips.",
+      "tags": ["Somerville", "cafés", "bakeries", "Portuguese", "dogs", "dog beaches", "trails", "moon", "secondhand", "day trips"]
+    },
+    "asheville-highlands-guide": {
+      "title": "Asheville & Highlands",
+      "category": "Local Guides",
+      "order": 3,
+      "description": "Free and cheap outings for a mom and a young kid in Asheville and on the Highlands plateau, plus grandparent time and dog-friendly spots.",
+      "tags": ["Asheville", "Highlands", "North Carolina", "kids", "free", "story times", "playgrounds", "waterfalls", "grandparents", "dogs"]
+    },
+    "asheville-locals-guide": {
+      "title": "Carl & Stuart’s Asheville",
+      "category": "Local Guides",
+      "order": 4,
+      "description": "Asheville from Biltmore Forest for Carl and Stuart: live music, OLLI and lecture nights, new restaurants and wine, walks, and grandkid days.",
+      "tags": ["Asheville", "North Carolina", "live music", "OLLI", "lectures", "restaurants", "wine", "walks", "grandkids", "farmers markets", "symphony"]
+    },
+    "torquay-local-guide": {
+      "title": "Torquay & the Surf Coast",
+      "category": "Local Guides",
+      "order": 5,
+      "description": "The Surf Coast for a Torquay family that lives there: festivals and markets, live music, pilates and sauna, wildlife outings, and dog beaches.",
+      "tags": ["Torquay", "Surf Coast", "Victoria", "Australia", "festivals", "markets", "live music", "pilates", "surf", "platypus", "dog beaches"]
+    },
+    "natick-local-guide": {
+      "title": "Natick & MetroWest",
+      "category": "Local Guides",
+      "order": 6,
+      "description": "MetroWest for one Natick family, sorted by drive time: music venues, bike routes, native plants, makers’ workshops, D&D, and robotics.",
+      "tags": ["Natick", "MetroWest", "live music", "cycling", "gardens", "native plants", "D&D", "robotics", "sailing", "fairs"]
+    },
+    "monhegan-island-guide": {
+      "title": "Monhegan Island Resource Library",
+      "category": "Monhegan",
+      "order": 1,
+      "description": "A deep, practical guide to Monhegan Island, Maine: ferries, trails and Cathedral Woods, the lighthouse, birding, artists, and rainy days.",
+      "tags": ["Monhegan", "Maine", "ferries", "trails", "Cathedral Woods", "lighthouse", "birding", "artists", "galleries"]
+    },
+    "magnolia-house-guide": {
+      "title": "Magnolia House Guest Guide",
+      "category": "Monhegan",
+      "order": 2,
+      "description": "The guest guide for Magnolia House on Monhegan: arrival and check-in, the house, water conservation, trash, checkout, and the island.",
+      "tags": ["Magnolia House", "Monhegan", "guests", "check-in", "checkout", "water", "rental"]
+    },
+    "watercalculator": {
+      "title": "Water Conservation Calculator",
+      "category": "Monhegan",
+      "order": 3,
+      "description": "Compare standard and water-wise use for a Monhegan stay by guests and days, and see which habits save the most for the island’s aquifer.",
+      "tags": ["Monhegan", "water", "conservation", "calculator", "aquifer"]
+    },
+    "gwyn-college-hq": {
+      "title": "Gwyn’s College HQ",
+      "category": "Family",
+      "order": 1,
+      "description": "Gwyn’s college-search planner: today’s task, the week’s calendar, visits and interviews, application and SAT links, and the college list.",
+      "tags": ["college", "visits", "interviews", "applications", "SAT", "planner"]
+    },
+    "gwyn-babysitting-tutoring": {
+      "title": "Gwyn’s Babysitting & Tutoring",
+      "category": "Family",
+      "order": 2,
+      "description": "Gwyn’s page for Charlestown families: math and writing tutoring, executive-function coaching, test prep, babysitting, and dog walking.",
+      "tags": ["babysitting", "tutoring", "dog walking", "Charlestown", "math", "writing", "test prep"]
+    }
+  }
+}

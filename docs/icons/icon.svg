@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Cleverzebra Library</title>
+  <defs>
+    <clipPath id="zebra-book"><rect x="196" y="96" width="96" height="300" rx="12"/></clipPath>
+  </defs>
+  <rect id="bg" width="512" height="512" rx="112" fill="#f8f3e9"/>
+  <g id="art">
+    <rect x="92" y="394" width="328" height="20" rx="10" fill="#221f1b"/>
+    <rect x="114" y="150" width="72" height="246" rx="12" fill="#2e5a4b"/>
+    <rect x="114" y="186" width="72" height="9" fill="#f8f3e9" opacity=".9"/>
+    <rect x="114" y="352" width="72" height="9" fill="#f8f3e9" opacity=".9"/>
+    <rect x="196" y="96" width="96" height="300" rx="12" fill="#221f1b"/>
+    <g clip-path="url(#zebra-book)" fill="#f8f3e9">
+      <path d="M186 126c30-14 62 6 116-10v17c-50 17-86-4-116 9z"/>
+      <path d="M186 166c20-4 36 2 52 6 10 2 18 2 26 0-12 8-32 10-50 6-10-2-18-2-28 0z"/>
+      <path d="M186 200c28 6 48-6 76 0 16 3 26 10 40 8v16c-20 2-28-8-44-10-26-3-44 6-72 1z"/>
+      <path d="M302 250c-24 2-40 10-62 8-12-1-20-4-30-2 14-10 36-14 58-12 12 1 22 0 34-4z"/>
+      <path d="M186 286c24 2 46 12 72 6 18-4 30-12 44-10v15c-14-2-26 8-44 12-28 6-50-4-72-6z"/>
+      <path d="M186 334c34-8 72 12 116-2v14c-44 14-82-6-116 3z"/>
+    </g>
+    <g transform="rotate(-13 346 394)">
+      <rect x="346" y="188" width="58" height="206" rx="11" fill="#9a4726"/>
+      <rect x="358" y="222" width="34" height="46" rx="5" fill="#f8f3e9" opacity=".92"/>
+    </g>
+  </g>
+</svg>

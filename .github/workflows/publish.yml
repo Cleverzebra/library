@@ -1,0 +1,79 @@
+# Publishes the library to GitHub Pages and refreshes its saved list of sites.
+#
+# Optional fallback. The page already checks GitHub for new sites by itself.
+# This workflow adds a check on GitHub's servers every six hours and publishes
+# the result with the site, for devices that can't reach GitHub's API (for
+# example when a network has used up GitHub's hourly limit for visitors).
+#
+# Turn it on with Settings > Pages > Build and deployment > Source: GitHub
+# Actions. If Pages deploys from a branch instead, this workflow notices and
+# publishes nothing.
+#
+# It uses only the built-in GITHUB_TOKEN, with the least access each job
+# needs. The token stays on GitHub's servers and never reaches the page.
+#
+# Scheduling limits: GitHub can start scheduled runs late or skip them when it
+# is busy, and it switches schedules off in a public repository after 60 days
+# with no activity there. Turn it back on from the Actions tab; the page's own
+# checks keep working meanwhile.
+
+name: Publish library
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # check out this repository
+      pages: read # read this repository's Pages settings
+    outputs:
+      deploy: ${{ steps.catalog.outputs.deploy }}
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Run the unit tests
+        run: node --test
+
+      - name: Check for sites and build the catalog
+        id: catalog
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          LIBRARY_REPO_ID: ${{ github.repository_id }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: node scripts/build-catalog.mjs
+
+      - name: Package the site
+        if: steps.catalog.outputs.deploy == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    if: needs.build.outputs.deploy == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write # publish to GitHub Pages
+      id-token: write # prove to Pages that this run is allowed to publish
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
