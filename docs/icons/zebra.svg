@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="320" viewBox="0 0 720 320">
+  <defs>
+    <linearGradient id="fx" x1="0" x2="1" y1="0" y2="0"><stop offset=".08" stop-color="#fff" stop-opacity="0"/><stop offset=".62" stop-color="#fff"/></linearGradient>
+    <linearGradient id="fy" x1="0" x2="0" y1="0" y2="1"><stop offset=".35" stop-color="#fff"/><stop offset=".97" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <mask id="mx"><rect width="720" height="320" fill="url(#fx)"/></mask>
+    <mask id="my"><rect width="720" height="320" fill="url(#fy)"/></mask>
+  </defs>
+  <g mask="url(#mx)"><g mask="url(#my)"><path fill="#221f1b" fill-opacity=".085" d="M30 -10C92 74 30 202 102 330L126 330C57 202 123 74 61 -10ZM101 -10C163 74 88 202 160 330L167 330C110 202 201 74 139 -10ZM178 -10C189 74 215 202 236 330L245 330C238 202 227 74 215 -10ZM251 -10C265 74 276 202 300 330L306 330C294 202 295 74 281 -10ZM325 -10C329 74 383 202 397 330L407 330C405 202 364 74 360 -10ZM397 -10C406 74 453 202 472 330L478 330C465 202 425 74 416 -10ZM445 -10C508 74 423 202 496 330L523 330C457 202 548 74 484 -10ZM520 -10C564 74 544 202 598 330L609 330C566 202 596 74 553 -10ZM598 -10C604 74 636 202 652 330L665 330C662 202 641 74 635 -10ZM663 -10C657 74 722 202 727 330L740 330C738 202 674 74 680 -10Z"/></g></g>
+</svg>

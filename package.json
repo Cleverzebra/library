@@ -1,0 +1,17 @@
+{
+  "name": "cleverzebra-library",
+  "private": true,
+  "description": "A home screen for the Cleverzebra GitHub Pages sites. The site itself (docs/) has no build step; these scripts are for tests and maintenance.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "test:e2e": "playwright test",
+    "serve": "node tests/e2e/server.mjs",
+    "stamp": "node scripts/stamp.mjs",
+    "icons": "node scripts/render-icons.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.56.1"
+  }
+}
