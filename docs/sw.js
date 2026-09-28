@@ -9,7 +9,7 @@
    update. To stay usable offline anyway, the library also keeps a copy of
    its files in its own IndexedDB database and rebuilds the cache from it. */
 
-const VERSION = '231522730818';
+const VERSION = 'd9d2e146d0ff';
 const PREFIX = 'cleverzebra-library-';
 const SHELL_CACHE = `${PREFIX}shell-${VERSION}`;
 const DATA_CACHE = `${PREFIX}data`;
@@ -31,12 +31,15 @@ const SHELL_FILES = [
   'js/format.js',
   'js/store.js',
   'icons/icon.svg',
-  'icons/zebra.svg',
+  'icons/hero.svg',
   'icons/favicon-32.png',
   'icons/apple-touch-icon.png',
   'icons/icon-192.png',
   'icons/icon-512.png',
   'icons/icon-maskable-512.png',
+  'fonts/fraunces-roman.woff2',
+  'fonts/fraunces-italic.woff2',
+  'fonts/OFL.txt',
 ];
 // END SHELL FILES
 
