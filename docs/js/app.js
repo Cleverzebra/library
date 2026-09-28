@@ -36,6 +36,7 @@ import { describeStatus, formatUntil, plural } from './format.js';
 const $ = (selector) => document.querySelector(selector);
 
 const els = {
+  greeting: $('#greeting'),
   status: $('#status'),
   statusText: $('#status-text'),
   checkBtn: $('#check-btn'),
@@ -74,6 +75,7 @@ const app = {
 };
 
 const TONES = { gardens: 1, 'local-guides': 2, monhegan: 3, family: 4, other: 0 };
+const ICONS = { gardens: 'sprout', 'local-guides': 'pin', monhegan: 'lighthouse', family: 'home' };
 
 function toneFor(category) {
   const slug = slugify(category);
@@ -81,6 +83,23 @@ function toneFor(category) {
   let hash = 0;
   for (const ch of slug) hash = (hash * 31 + ch.charCodeAt(0)) >>> 0;
   return 5 + (hash % 3);
+}
+
+function iconFor(category) {
+  return ICONS[slugify(category)] ?? 'book';
+}
+
+function greetingParts(date = new Date()) {
+  const hour = date.getHours();
+  const hello =
+    hour >= 5 && hour < 12
+      ? 'Good morning'
+      : hour >= 12 && hour < 17
+        ? 'Good afternoon'
+        : hour >= 17 && hour < 22
+          ? 'Good evening'
+          : 'Welcome back';
+  return [hello, date.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' })];
 }
 
 // --- storage -----------------------------------------------------------------
@@ -258,8 +277,13 @@ function card(view, sectionId) {
   const top = el(
     'div',
     { className: 'card-top' },
-    el('span', { className: 'cat-chip', text: view.category }),
-    view.isNew ? el('span', { className: 'new-badge', text: 'Recently added' }) : null,
+    el('span', { className: 'card-icon' }, icon(iconFor(view.category))),
+    el(
+      'span',
+      { className: 'card-meta' },
+      el('span', { className: 'cat-chip', text: view.category }),
+      view.isNew ? el('span', { className: 'new-badge', text: 'Recently added' }) : null,
+    ),
     el(
       'button',
       {
@@ -299,19 +323,26 @@ function card(view, sectionId) {
   );
 }
 
-function section(id, title, views, { note, level = 2 } = {}) {
+function section(id, title, views, { note, level = 2, iconName, tone } = {}) {
   const headingId = `${id}-title`;
   return el(
     'section',
     { className: 'shelf', 'aria-labelledby': headingId, dataset: { section: id } },
     el(
       'div',
-      { className: 'shelf-head' },
+      { className: 'shelf-head', dataset: tone === undefined ? {} : { tone: String(tone) } },
+      iconName ? el('span', { className: 'shelf-icon' }, icon(iconName)) : null,
       el(`h${level}`, { id: headingId, text: title }),
       el('span', { className: 'count', text: note ?? plural(views.length, 'site') }),
     ),
     el('ul', { className: 'grid', role: 'list' }, views.map((v) => card(v, id))),
   );
+}
+
+const FAVORITES_SHELF = { iconName: 'star', tone: 'fav' };
+
+function categoryShelf(category) {
+  return { iconName: iconFor(category), tone: toneFor(category) };
 }
 
 function recentRow(byKey) {
@@ -368,8 +399,8 @@ function renderFilters(views) {
   const categories = orderedCategories(views, app.overrides.categories);
   const options = [
     { value: 'all', label: 'All' },
-    { value: 'favorites', label: 'Favorites' },
-    ...categories.map((c) => ({ value: slugify(c), label: c, tone: toneFor(c) })),
+    { value: 'favorites', label: 'Favorites', tone: 'fav', icon: 'star' },
+    ...categories.map((c) => ({ value: slugify(c), label: c, tone: toneFor(c), icon: iconFor(c) })),
   ];
   if (app.filter !== 'all' && !options.some((o) => o.value === app.filter)) app.filter = 'all';
   const signature = options.map((o) => `${o.value}:${o.label}`).join('|');
@@ -383,7 +414,7 @@ function renderFilters(views) {
           'label',
           { className: 'chip', dataset: o.tone === undefined ? {} : { tone: String(o.tone) } },
           el('input', { type: 'radio', name: 'filter', value: o.value }),
-          el('span', { className: 'chip-face' }, o.tone === undefined ? null : el('span', { className: 'chip-dot', 'aria-hidden': 'true' }), o.label),
+          el('span', { className: 'chip-face' }, o.icon ? icon(o.icon, 'icon chip-icon') : null, o.label),
         ),
       ),
     );
@@ -413,7 +444,9 @@ function renderContent(views) {
     const scope = app.filter === 'favorites' ? ' in your favorites' : app.filter !== 'all' ? ' in this category' : '';
     announce(results.length ? `${plural(results.length, 'site')} match${results.length === 1 ? 'es' : ''}.` : 'No sites match.');
     if (results.length) {
-      nodes.push(section('results', 'Search results', results, { note: `${plural(results.length, 'site')} match “${query}”${scope}` }));
+      nodes.push(
+        section('results', 'Search results', results, { note: `${plural(results.length, 'site')} match “${query}”${scope}`, iconName: 'search' }),
+      );
     } else {
       nodes.push(
         emptyMessage(
@@ -427,12 +460,12 @@ function renderContent(views) {
     announce(`${plural(shown.length, 'favorite')}.`);
     nodes.push(
       shown.length
-        ? section('favorites', 'Favorites', shown)
+        ? section('favorites', 'Favorites', shown, FAVORITES_SHELF)
         : emptyMessage('No favorites yet.', 'Tap the star on any site to keep it here. Favorites are saved on this device.', false),
     );
   } else if (app.filter !== 'all') {
     announce(`${plural(shown.length, 'site')}.`);
-    if (shown.length) nodes.push(section(`cat-${app.filter}`, shown[0].category, shown));
+    if (shown.length) nodes.push(section(`cat-${app.filter}`, shown[0].category, shown, categoryShelf(shown[0].category)));
   } else if (!views.length) {
     nodes.push(
       emptyMessage(
@@ -445,9 +478,11 @@ function renderContent(views) {
     announce('');
     nodes.push(recentRow(byKey));
     const favorites = app.favorites.map((k) => byKey.get(k)).filter(Boolean);
-    if (favorites.length) nodes.push(section('favorites', 'Favorites', favorites));
+    if (favorites.length) nodes.push(section('favorites', 'Favorites', favorites, FAVORITES_SHELF));
     for (const category of orderedCategories(views, app.overrides.categories)) {
-      nodes.push(section(`cat-${slugify(category)}`, category, views.filter((v) => v.category === category)));
+      nodes.push(
+        section(`cat-${slugify(category)}`, category, views.filter((v) => v.category === category), categoryShelf(category)),
+      );
     }
   }
 
@@ -477,7 +512,19 @@ function renderStatus() {
   els.offline.hidden = online;
 }
 
+function renderGreeting() {
+  const [hello, day] = greetingParts();
+  if (els.greeting.dataset.text === `${hello}|${day}`) return;
+  els.greeting.dataset.text = `${hello}|${day}`;
+  els.greeting.replaceChildren(
+    el('span', { text: hello }),
+    el('span', { className: 'greeting-sep', 'aria-hidden': 'true', text: '·' }),
+    el('span', { className: 'greeting-date', text: day }),
+  );
+}
+
 function render() {
+  renderGreeting();
   const views = currentViews();
   renderFilters(views);
   renderContent(views);

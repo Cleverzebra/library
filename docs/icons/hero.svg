@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="400" viewBox="0 0 340 400">
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#f3e9d6"/>
+      <stop offset="1" stop-color="#e8d9bf"/>
+    </linearGradient>
+    <clipPath id="arch"><path d="M10 400V170a160 160 0 0 1 320 0v230z"/></clipPath>
+    <clipPath id="zebra-book"><rect x="96" y="128" width="56" height="190" rx="8"/></clipPath>
+  </defs>
+
+  <path d="M10 400V170a160 160 0 0 1 320 0v230z" fill="url(#sky)"/>
+
+  <g clip-path="url(#arch)">
+    <!-- Faint zebra stripes across the window -->
+    <g fill="#221f1b" fill-opacity=".055">
+      <path d="M22 0c26 70-14 150 14 230 18 52 4 112 12 170h20c-10-58 6-120-12-172-26-78 14-160-10-228z"/>
+      <path d="M78 0c18 60 30 120 8 190-16 50 8 120 2 210h14c8-90-16-160 0-210 22-70 10-130-6-190z"/>
+      <path d="M130 0c-10 50 26 110 16 170-8 50 14 120 12 230h22c0-110-24-180-14-230 10-60-28-120-16-170z"/>
+      <path d="M194 0c22 64-10 132 10 196 14 46 0 120 8 204h18c-6-84 8-156-6-204-20-64 12-132-12-196z"/>
+      <path d="M252 0c-8 70 30 130 14 196-12 50 12 120 6 204h14c6-84-18-154-6-204 16-66-24-126-12-196z"/>
+      <path d="M300 0c22 60 0 140 18 210 14 52 0 120 8 190h20c-8-70 6-138-10-190-20-70 4-150-18-210z"/>
+    </g>
+
+    <circle cx="238" cy="126" r="44" fill="#f3d9a4" fill-opacity=".9"/>
+
+    <!-- Shelf -->
+    <ellipse cx="170" cy="340" rx="136" ry="7" fill="#221f1b" fill-opacity=".08"/>
+    <rect x="30" y="318" width="280" height="14" rx="7" fill="#221f1b"/>
+
+    <!-- Green book -->
+    <rect x="48" y="168" width="42" height="150" rx="7" fill="#2e5a4b"/>
+    <rect x="48" y="190" width="42" height="7" fill="#f8f3e9" fill-opacity=".85"/>
+    <rect x="48" y="290" width="42" height="7" fill="#f8f3e9" fill-opacity=".85"/>
+
+    <!-- Zebra book -->
+    <rect x="96" y="128" width="56" height="190" rx="8" fill="#221f1b"/>
+    <g clip-path="url(#zebra-book)" fill="#f8f3e9">
+      <g transform="translate(-18.3 67.2) scale(.583 .633)">
+        <path d="M186 126c30-14 62 6 116-10v17c-50 17-86-4-116 9z"/>
+        <path d="M186 166c20-4 36 2 52 6 10 2 18 2 26 0-12 8-32 10-50 6-10-2-18-2-28 0z"/>
+        <path d="M186 200c28 6 48-6 76 0 16 3 26 10 40 8v16c-20 2-28-8-44-10-26-3-44 6-72 1z"/>
+        <path d="M302 250c-24 2-40 10-62 8-12-1-20-4-30-2 14-10 36-14 58-12 12 1 22 0 34-4z"/>
+        <path d="M186 286c24 2 46 12 72 6 18-4 30-12 44-10v15c-14-2-26 8-44 12-28 6-50-4-72-6z"/>
+        <path d="M186 334c34-8 72 12 116-2v14c-44 14-82-6-116 3z"/>
+      </g>
+    </g>
+
+    <!-- Mustard book -->
+    <rect x="158" y="178" width="28" height="140" rx="6" fill="#c58a22"/>
+    <rect x="164" y="200" width="16" height="26" rx="3" fill="#f8f3e9" fill-opacity=".9"/>
+
+    <!-- Leaning terracotta book -->
+    <g transform="rotate(-14 222 318)">
+      <rect x="222" y="172" width="38" height="146" rx="7" fill="#9a4726"/>
+      <rect x="230" y="196" width="22" height="32" rx="4" fill="#f8f3e9" fill-opacity=".92"/>
+    </g>
+
+    <!-- Potted sprout -->
+    <path d="M284 286c-2-16 0-32 8-44" fill="none" stroke="#2e5a4b" stroke-width="3" stroke-linecap="round"/>
+    <path d="M285 284c-16-6-26-20-24-38 16 4 25 18 24 38z" fill="#3f6639"/>
+    <path d="M287 276c14-10 26-12 34-8-6 12-20 16-34 8z" fill="#2e5a4b"/>
+    <path d="M292 244c2-12 10-20 20-22 0 12-8 20-20 22z" fill="#3f6639"/>
+    <path d="M268 286h36l-5 32h-26z" fill="#b8643d"/>
+    <rect x="265" y="282" width="42" height="9" rx="3" fill="#a85730"/>
+  </g>
+
+  <path d="M24 400V170a146 146 0 0 1 292 0v230" fill="none" stroke="#fffaf0" stroke-opacity=".7" stroke-width="2"/>
+</svg>

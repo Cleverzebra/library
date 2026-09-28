@@ -17,14 +17,19 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Library">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="preload" href="fonts/fraunces-roman.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/app.css">
   <script type="module" src="js/app.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to the sites</a>
-  <div class="zebra-mark" aria-hidden="true"></div>
 
   <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M12 20.5V12.5"/><path d="M12 12.5c0-4 2.9-6.6 7.5-6.6 0 4.3-3 6.6-7.5 6.6z"/><path d="M12 10.8c0-3.5-2.5-6-6.8-6 0 3.8 2.6 6 6.8 6z"/><path d="M7.5 20.5h9"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.7-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 15.3 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.4"/></symbol>
+    <symbol id="i-lighthouse" viewBox="0 0 24 24"><path d="m9.4 20.5 1.1-11h3l1.1 11"/><path d="M7.5 20.5h9"/><path d="M10 9.5h4V7a2 2 0 0 0-4 0z"/><path d="M12 3.2v.9"/><path d="M10.1 14.8h3.8"/><path d="m4 6.2 3 1M20 6.2l-3 1"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.8 10.6 12 4l8.2 6.6"/><path d="M6 9.2v11.3h12V9.2"/><path d="M12 17.4s-3-1.9-3-3.9a1.55 1.55 0 0 1 3-.8 1.55 1.55 0 0 1 3 .8c0 2-3 3.9-3 3.9z"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M5.5 4.5h10a2 2 0 0 1 2 2v14H7.5a2 2 0 0 1-2-2z"/><path d="M5.5 18.5a2 2 0 0 1 2-2h10"/><path d="M9.5 8.5h4.5"/></symbol>
     <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
     <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20.5 12a8.5 8.5 0 1 1-2.5-6"/><path d="M20.5 4v5h-5"/></symbol>
     <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.8 2.5 5.1 5.6.8-4 4 .9 5.6-5-2.7-5 2.7.9-5.6-4-4 5.6-.8z"/></symbol>
@@ -45,16 +50,35 @@
   </div>
 
   <header class="masthead wrap">
-    <div class="brand">
-      <img class="brand-mark" src="icons/icon.svg" alt="" width="56" height="56">
-      <div>
-        <h1>Cleverzebra Library</h1>
+    <div class="masthead-bar">
+      <img class="brand-mark" src="icons/icon.svg" alt="" width="46" height="46">
+      <button type="button" id="more-btn" class="btn btn-quiet" aria-haspopup="dialog">
+        <svg class="icon" aria-hidden="true"><use href="#i-more"/></svg><span>More</span>
+      </button>
+    </div>
+    <div class="hero">
+      <p class="greeting" id="greeting">Welcome</p>
+      <div class="hero-copy">
+        <h1>Cleverzebra <em>Library</em></h1>
         <p class="tagline">Your sites, gathered in one place.</p>
       </div>
+      <img class="hero-art" src="icons/hero.svg" alt="" width="340" height="400">
+
+      <form class="finder" role="search" id="finder">
+        <label class="search" for="search">
+          <span class="visually-hidden">Search the library</span>
+          <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+          <input id="search" type="search" placeholder="Search the library" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="search" aria-describedby="search-hint">
+        </label>
+        <p id="search-hint" class="hint">Searches the titles, descriptions, and tags in this library, not the sites themselves.<span class="key-hint"> Press / to start.</span></p>
+        <div class="filter-row">
+          <fieldset id="filters" class="filters">
+            <legend class="visually-hidden">Show</legend>
+          </fieldset>
+          <button type="button" id="reset" class="btn btn-link" hidden>Reset search and filters</button>
+        </div>
+      </form>
     </div>
-    <button type="button" id="more-btn" class="btn btn-quiet" aria-haspopup="dialog">
-      <svg class="icon" aria-hidden="true"><use href="#i-more"/></svg><span>More</span>
-    </button>
   </header>
 
   <div id="offline-banner" class="banner banner-offline wrap" hidden>
@@ -66,25 +90,10 @@
 
   <div class="statusbar wrap">
     <p id="status" class="status" data-tone="info" role="status"><span class="status-dot" aria-hidden="true"></span><span id="status-text">Loading your library</span></p>
-    <button type="button" id="check-btn" class="btn btn-quiet">
+    <button type="button" id="check-btn" class="btn btn-ghost">
       <svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg><span>Check for new sites</span>
     </button>
   </div>
-
-  <form class="finder wrap" role="search" id="finder">
-    <label class="search" for="search">
-      <span class="visually-hidden">Search the library</span>
-      <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
-      <input id="search" type="search" placeholder="Search the library" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="search" aria-describedby="search-hint">
-    </label>
-    <p id="search-hint" class="hint">Searches the titles, descriptions, and tags in this library, not the sites themselves.<span class="key-hint"> Press / to start.</span></p>
-    <div class="filter-row">
-      <fieldset id="filters" class="filters">
-        <legend class="visually-hidden">Show</legend>
-      </fieldset>
-      <button type="button" id="reset" class="btn btn-link" hidden>Reset search and filters</button>
-    </div>
-  </form>
 
   <p id="results-count" class="visually-hidden" aria-live="polite"></p>
 
@@ -93,6 +102,7 @@
   </main>
 
   <footer class="footer wrap">
+    <img class="footer-mark" src="icons/icon.svg" alt="" width="34" height="34">
     <p>Favorites and recently opened sites are saved on this device only. Linked sites open separately and may need an internet connection.</p>
     <p><button type="button" class="btn btn-link" data-open-more="install">Add to your Dock or Home Screen</button></p>
   </footer>
